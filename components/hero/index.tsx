@@ -1,0 +1,6 @@
+export { Hero } from './Hero'
+export { default as Logo } from './Logo'
+export { default as Caption } from './Caption'
+export { default as CustomCursor } from './CustomCursor'
+export { default as VideoBackground } from './VideoBackground'
+export { Gallery } from './Gallery'
