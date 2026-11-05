@@ -13,6 +13,7 @@ import {
   X,
   Grid3x3,
   LayoutGrid,
+  Eye,
 } from 'lucide-react'
 import { useCart } from '@/app/context/CartContext'
 
@@ -43,17 +44,16 @@ type Product = {
 }
 
 // ============ PRODUCT DATA ============
-// (To be replaced later by an API / CMS fetch)
 const allProducts: Product[] = [
   {
     id: 1,
-    title: 'Catch of the Day Cap',
+    title: ' Cap Vintage Made',
     category: 'Caps',
     subCategory: 'Classics',
     price: 119.0,
     originalPrice: 199.0,
     discount: -40,
-    image: '/images/cas0.jpg',
+    image: '/images/vintage made.jpg',
     slug: 'casquette-catch-of-the-day',
     color: POP.pink,
     isNew: true,
@@ -61,13 +61,13 @@ const allProducts: Product[] = [
   },
   {
     id: 2,
-    title: 'NY Black-NB Cap',
+    title: 'Hats Men',
     category: 'Caps',
     subCategory: 'NY',
     price: 99.0,
     originalPrice: 124.0,
     discount: -20,
-    image: '/images/cas1.jpg',
+    image: '/images/HatsMen.jpg',
     slug: 'casquette-ny-noir-nb',
     color: POP.cyan,
     rating: 4,
@@ -80,7 +80,7 @@ const allProducts: Product[] = [
     price: 75.0,
     originalPrice: 125.0,
     discount: -40,
-    image: '/images/cas2.jpg',
+    image: '/images/cas7.jpg',
     slug: 'casquette-canadiens',
     color: POP.yellow,
     rating: 5,
@@ -93,7 +93,7 @@ const allProducts: Product[] = [
     price: 99.0,
     originalPrice: 124.0,
     discount: -20,
-    image: '/images/cas3.jpg',
+    image: '/images/cap14.jpg',
     slug: 'casquette-ny-beige',
     color: POP.purple,
     rating: 4,
@@ -106,7 +106,7 @@ const allProducts: Product[] = [
     price: 99.0,
     originalPrice: 124.0,
     discount: -20,
-    image: '/images/cas4.jpg',
+    image: '/images/cap15.jpg',
     slug: 'casquette-ny-gris-noir',
     color: POP.pink,
     isNew: true,
@@ -114,13 +114,13 @@ const allProducts: Product[] = [
   },
   {
     id: 6,
-    title: 'NY Black Cap - Black Logo',
+    title: 'Twill Classic Cap',
     category: 'Caps',
     subCategory: 'NY',
     price: 99.0,
     originalPrice: 124.0,
     discount: -20,
-    image: '/images/cas5.jpg',
+    image: '/images/Twill Classic Cap.jpg',
     slug: 'casquette-ny-noir-logo-noir',
     color: POP.cyan,
     rating: 5,
@@ -133,7 +133,7 @@ const allProducts: Product[] = [
     price: 99.0,
     originalPrice: 124.0,
     discount: -20,
-    image: '/images/cas6.jpg',
+    image: '/images/cap0.jpg',
     slug: 'casquette-ny-vert-sapin',
     color: POP.yellow,
     rating: 4,
@@ -153,7 +153,7 @@ const allProducts: Product[] = [
   },
   {
     id: 9,
-    title: 'Street Icon',
+    title: 'CATCH OF THE DAY',
     category: 'Caps',
     subCategory: 'Limited Edition',
     price: 149.0,
@@ -165,7 +165,7 @@ const allProducts: Product[] = [
   },
   {
     id: 10,
-    title: 'Neon Wave',
+    title: 'NY Black Cap',
     category: 'Caps',
     subCategory: 'Limited Edition',
     price: 129.0,
@@ -177,22 +177,22 @@ const allProducts: Product[] = [
   },
   {
     id: 11,
-    title: 'Yellow Pop',
+    title: 'Cap Silou',
     category: 'Caps',
     subCategory: 'Limited Edition',
     price: 139.0,
-    image: '/images/cas2.jpg',
+    image: '/images/cap silou.jpg',
     slug: 'yellow-pop',
     color: POP.yellow,
     rating: 4,
   },
   {
     id: 12,
-    title: 'Violet Hype',
+    title: ' Cap Kick',
     category: 'Caps',
     subCategory: 'Limited Edition',
     price: 159.0,
-    image: '/images/cas3.jpg',
+    image: '/images/cap5.jpg',
     slug: 'violet-hype',
     color: POP.purple,
     isNew: true,
@@ -227,14 +227,6 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
       className="group relative bg-white border-[3px] border-black transition-all duration-300 hover:-translate-y-1"
       style={{ boxShadow: '6px 6px 0 #000' }}
     >
-      {/* Editorial number */}
-      <span
-        className="absolute -top-3 -left-3 z-20 w-8 h-8 flex items-center justify-center border-2 border-black text-[11px] font-black"
-        style={{ background: product.color }}
-      >
-        {String(product.id).padStart(2, '0')}
-      </span>
-
       {/* "NEW" badge */}
       {product.isNew && (
         <motion.span
@@ -247,10 +239,11 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
         </motion.span>
       )}
 
-      {/* Image */}
+      {/* Image — cliquable vers la page détail */}
       <Link
         href={`/produit/${product.slug}`}
         className="block relative overflow-hidden aspect-square bg-gray-100 border-b-[3px] border-black"
+        aria-label={`Voir les détails de ${product.title}`}
       >
         <Image
           src={product.image}
@@ -270,11 +263,12 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
           </span>
         )}
 
-        {/* Quick view overlay */}
+        {/* Overlay "Voir détails" au hover */}
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <button className="bg-white border-2 border-black px-4 py-2 text-[11px] font-black uppercase tracking-wider shadow-[3px_3px_0_#000] hover:shadow-[5px_5px_0_#000] hover:-translate-y-0.5 transition-all duration-300">
-            Quick view
-          </button>
+          <span className="inline-flex items-center gap-2 bg-white border-2 border-black px-4 py-2 text-[11px] font-black uppercase tracking-wider shadow-[3px_3px_0_#000]">
+            <Eye size={14} />
+            Voir détails
+          </span>
         </div>
       </Link>
 
@@ -329,26 +323,42 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
           )}
         </div>
 
-        {/* Add to cart — ✅ activated */}
-        <button
-          onClick={() =>
-            addToCart({
-              id: product.id,
-              title: product.title,
-              category: product.category,
-              price: product.price,
-              originalPrice: product.originalPrice,
-              discount: product.discount,
-              image: product.image,
-              slug: product.slug,
-            })
-          }
-          className="mt-4 w-full py-2.5 border-2 border-black text-[11px] font-black uppercase tracking-wider text-black transition-all duration-300 hover:shadow-[4px_4px_0_#000] hover:-translate-y-0.5 flex items-center justify-center gap-2"
-          style={{ background: product.color }}
-        >
-          <ShoppingBag size={14} />
-          Add to cart
-        </button>
+        {/* ✅ Actions : Voir détails + Add to cart */}
+        <div className="mt-4 flex flex-col gap-2">
+          {/* Voir détails */}
+          <Link
+            href={`/produit/${product.slug}`}
+            className="group/details w-full py-2.5 border-2 border-black text-[11px] font-black uppercase tracking-wider text-black transition-all duration-300 hover:shadow-[4px_4px_0_#000] hover:-translate-y-0.5 flex items-center justify-center gap-2 bg-white"
+          >
+            <Eye size={14} />
+            Voir détails
+            <ArrowRight
+              size={12}
+              className="transition-transform group-hover/details:translate-x-1"
+            />
+          </Link>
+
+          {/* Add to cart */}
+          <button
+            onClick={() =>
+              addToCart({
+                id: product.id,
+                title: product.title,
+                category: product.category,
+                price: product.price,
+                originalPrice: product.originalPrice,
+                discount: product.discount,
+                image: product.image,
+                slug: product.slug,
+              })
+            }
+            className="w-full py-2.5 border-2 border-black text-[11px] font-black uppercase tracking-wider text-black transition-all duration-300 hover:shadow-[4px_4px_0_#000] hover:-translate-y-0.5 flex items-center justify-center gap-2"
+            style={{ background: product.color }}
+          >
+            <ShoppingBag size={14} />
+            Add to cart
+          </button>
+        </div>
       </div>
 
       {/* Decorative line */}
@@ -369,7 +379,6 @@ export default function CollectionPage() {
   const [isFilterOpen, setIsFilterOpen] = useState(false)
   const [gridView, setGridView] = useState<'grid-3' | 'grid-4'>('grid-3')
 
-  // Filter + sort
   const filteredProducts = useMemo(() => {
     let result =
       activeCategory === 'All'
@@ -399,7 +408,6 @@ export default function CollectionPage() {
     <div className="min-h-screen" style={{ backgroundColor: POP.cream }}>
       {/* ===== COLLECTION HERO ===== */}
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden bg-black">
-        {/* Halftone pattern */}
         <div
           className="absolute inset-0 pointer-events-none opacity-[0.12]"
           style={{
@@ -408,7 +416,6 @@ export default function CollectionPage() {
           }}
         />
 
-        {/* Decorative shapes */}
         <motion.div
           animate={{ rotate: [0, 360] }}
           transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
@@ -454,7 +461,9 @@ export default function CollectionPage() {
             </h1>
 
             <p className="text-white/50 text-sm sm:text-base tracking-[0.2em] uppercase mt-6 font-medium max-w-xl">
-              {filteredProducts.length} cap{filteredProducts.length > 1 ? 's' : ''} · Handcrafted · Made in Morocco
+              {filteredProducts.length} cap
+              {filteredProducts.length > 1 ? 's' : ''} · Handcrafted · Made in
+              Morocco
             </p>
           </motion.div>
         </div>
@@ -470,7 +479,6 @@ export default function CollectionPage() {
             className="bg-white border-[3px] border-black p-4 md:p-5 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4"
             style={{ boxShadow: '8px 8px 0 #000' }}
           >
-            {/* Categories */}
             <div className="flex items-center gap-2 flex-wrap">
               {CATEGORIES.map((cat) => (
                 <button
@@ -488,9 +496,7 @@ export default function CollectionPage() {
               ))}
             </div>
 
-            {/* Sort + view + mobile filters */}
             <div className="flex items-center gap-2 flex-wrap">
-              {/* Sort (desktop) */}
               <div className="relative hidden sm:block">
                 <select
                   value={sortBy}
@@ -509,7 +515,6 @@ export default function CollectionPage() {
                 />
               </div>
 
-              {/* Grid toggle */}
               <div className="hidden md:flex items-center border-2 border-black">
                 <button
                   onClick={() => setGridView('grid-3')}
@@ -534,7 +539,6 @@ export default function CollectionPage() {
                 </button>
               </div>
 
-              {/* Mobile filter button */}
               <button
                 onClick={() => setIsFilterOpen(true)}
                 className="sm:hidden px-3 py-1.5 border-2 border-black bg-black text-white text-[10px] font-black uppercase tracking-wider flex items-center gap-1.5"
@@ -549,7 +553,6 @@ export default function CollectionPage() {
 
       {/* ===== PRODUCT GRID ===== */}
       <section className="relative py-12 md:py-16">
-        {/* Halftone pattern */}
         <div
           className="absolute inset-0 pointer-events-none opacity-[0.35]"
           style={{
@@ -559,7 +562,6 @@ export default function CollectionPage() {
         />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
-          {/* Counter + active category */}
           <div className="flex items-center justify-between mb-8 flex-wrap gap-3">
             <div className="flex items-center gap-3">
               <span className="text-[10px] font-black uppercase tracking-[0.25em] text-black/50">
@@ -588,11 +590,13 @@ export default function CollectionPage() {
               className="group inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-wider text-black/50 hover:text-black transition-colors"
             >
               <span>Back</span>
-              <ArrowRight size={12} className="rotate-180 group-hover:-translate-x-1 transition-transform" />
+              <ArrowRight
+                size={12}
+                className="rotate-180 group-hover:-translate-x-1 transition-transform"
+              />
             </Link>
           </div>
 
-          {/* Grid */}
           {filteredProducts.length === 0 ? (
             <div className="text-center py-20">
               <p className="text-black/40 text-lg font-black uppercase tracking-wider mb-4">
@@ -626,7 +630,6 @@ export default function CollectionPage() {
             </motion.div>
           )}
 
-          {/* Bottom CTA */}
           <div className="text-center mt-16">
             <Link
               href="/#contact"
@@ -634,7 +637,8 @@ export default function CollectionPage() {
             >
               <Sparkles className="w-4 h-4" />
               Got a question? Contact us
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+              />
             </Link>
           </div>
         </div>
@@ -644,7 +648,6 @@ export default function CollectionPage() {
       <AnimatePresence>
         {isFilterOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -653,7 +656,6 @@ export default function CollectionPage() {
               className="fixed inset-0 bg-black/60 z-50 sm:hidden"
             />
 
-            {/* Drawer */}
             <motion.div
               initial={{ y: '100%' }}
               animate={{ y: 0 }}

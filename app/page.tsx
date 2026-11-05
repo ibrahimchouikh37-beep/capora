@@ -5,6 +5,7 @@ import { About } from '@/components/about/About'
 import BlogPreview from '@/components/blog/BlogPreview'
 import PortfolioPreview from '@/components/portfolio/PortfolioPreview'
 import Products3D from '@/components/products/Products3D'
+import VideoShowcase from '@/components/video/VideoShowcase' 
 import { ContactForm } from '@/components/contact/ContactForm'
 import { CTA } from '@/components/cta/CTA'
 import { Mail, Clock, Sparkles, ArrowRight } from 'lucide-react'
@@ -25,9 +26,10 @@ export default function Home() {
     <>
       <Hero />
       <About />
+       <VideoShowcase />
       <Products3D />
       <PortfolioPreview />
-      <BlogPreview />
+   
 
       {/* ========== SECTION CONTACT — Pop Parade ========== */}
       <section

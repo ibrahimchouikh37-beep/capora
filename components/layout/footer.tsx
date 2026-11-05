@@ -96,7 +96,7 @@ export default function Footer() {
             {/* ✅ LOGO IMAGE à la place du texte "Brandcap" */}
             <div className="mb-4 inline-flex items-center">
               <Image
-                src="/images/capora01.png"
+                src="/images/logocapora55.png"
                 alt="Capora MA"
                 width={200}
                 height={64}

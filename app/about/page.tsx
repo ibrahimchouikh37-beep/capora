@@ -25,6 +25,9 @@ import {
   Award,
   Coffee,
   MessageCircle,
+  Diamond,
+  Fingerprint,
+  Globe,
 } from 'lucide-react'
 
 // Palette Pop Parade identique à la page Collection
@@ -98,29 +101,34 @@ const timeline = [
   },
 ]
 
-const team = [
+// ============ CULTURE (remplace TEAM) ============
+const culture = [
   {
-    name: 'Yasmine',
-    role: 'Founder & Designer',
-    icon: Crown,
+    number: '01',
+    title: 'DESIGN',
+    description: 'Every detail has a purpose.',
+    icon: PenTool,
     color: POP.pink,
   },
   {
-    name: 'Omar',
-    role: 'Master artisan',
+    number: '02',
+    title: 'CRAFT',
+    description: 'Made with passion and precision.',
     icon: Scissors,
     color: POP.cyan,
   },
   {
-    name: 'Lina',
-    role: 'Art direction',
-    icon: Palette,
+    number: '03',
+    title: 'IDENTITY',
+    description: 'Express yourself without limits.',
+    icon: Fingerprint,
     color: POP.yellow,
   },
   {
-    name: 'Mehdi',
-    role: 'Customer relations',
-    icon: Heart,
+    number: '04',
+    title: 'COMMUNITY',
+    description: 'Built for those who stand out.',
+    icon: Users,
     color: POP.purple,
   },
 ]
@@ -206,7 +214,7 @@ export default function AboutPage() {
 
           <h1 className="font-['Inter_Tight'] font-black leading-[0.85] tracking-tighter text-white max-w-5xl">
             <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl uppercase">
-              WE DON'T
+              WE DON&apos;T
             </span>
             <span
               className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl uppercase italic"
@@ -298,7 +306,7 @@ export default function AboutPage() {
             </span>
 
             <p className="font-['Inter_Tight'] font-black text-2xl sm:text-3xl md:text-4xl text-black leading-tight max-w-3xl mx-auto">
-              « We don't just sell caps.{' '}
+              « We don&apos;t just sell caps.{' '}
               <span
                 className="px-2 py-0.5 border-b-4 border-black"
                 style={{ background: POP.pink, color: '#fff' }}
@@ -449,7 +457,7 @@ export default function AboutPage() {
 
               <div className="relative h-[400px] md:h-[480px] border-[3px] border-black overflow-hidden bg-gray-100">
                 <Image
-                  src="/images/aboutcapora.png"
+                  src="/images/caporaartz.png"
                   alt="Atelier Capora MA"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -652,7 +660,7 @@ export default function AboutPage() {
       </section>
 
       {/* ============================================ */}
-      {/* ========== ÉQUIPE ========== */}
+      {/* ========== THE CAPORA CULTURE (remplace Team) ========== */}
       {/* ============================================ */}
       <section className="relative py-20 md:py-28 overflow-hidden bg-black">
         <div
@@ -663,7 +671,16 @@ export default function AboutPage() {
           }}
         />
 
+        {/* Formes décoratives */}
+        <motion.div
+          animate={{ rotate: [0, 360] }}
+          transition={{ duration: 70, repeat: Infinity, ease: 'linear' }}
+          className="absolute -top-40 -right-40 w-96 h-96 rounded-full border-[6px] border-white/10"
+          style={{ background: POP.cyan, opacity: 0.2 }}
+        />
+
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
+          {/* Header éditorial */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -671,70 +688,105 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className="mb-14"
           >
-            <span
-              className="inline-flex items-center gap-2 px-4 py-1.5 border-2 border-white text-black text-[10px] font-black uppercase tracking-[0.3em] shadow-[4px_4px_0_rgba(255,255,255,0.2)]"
-              style={{ background: POP.cyan }}
-            >
-              <Users className="w-3 h-3" />
-              The team
-            </span>
-            <h2 className="font-['Inter_Tight'] font-black leading-[0.9] tracking-tight text-white mt-6">
-              <span className="block text-3xl sm:text-4xl md:text-5xl uppercase">
-                THE PEOPLE
+            <div className="flex items-center gap-3 mb-6">
+              <span
+                className="inline-flex items-center gap-2 px-4 py-1.5 border-2 border-white text-black text-[10px] font-black uppercase tracking-[0.3em] shadow-[4px_4px_0_rgba(255,255,255,0.2)]"
+                style={{ background: POP.yellow }}
+              >
+                <Sparkles className="w-3 h-3" />
+                The Capora Culture
+              </span>
+              <span className="text-white/40 text-[10px] tracking-[0.25em] uppercase font-bold">
+                Our DNA · 2026
+              </span>
+            </div>
+
+            <h2 className="font-['Inter_Tight'] font-black leading-[0.85] tracking-tighter text-white">
+              <span className="block text-4xl sm:text-5xl md:text-6xl uppercase">
+                THE CULTURE
               </span>
               <span
-                className="block text-3xl sm:text-4xl md:text-5xl uppercase italic"
+                className="block text-4xl sm:text-5xl md:text-6xl uppercase italic"
                 style={{ WebkitTextStroke: '2px #fff', color: 'transparent' }}
               >
-                BEHIND CAPORA.
+                BEHIND THE CAP.
+              </span>
+              <span
+                className="block text-2xl sm:text-3xl md:text-4xl uppercase mt-3"
+                style={{ color: POP.pink }}
+              >
+                A MOVEMENT. NOT JUST A BRAND.
               </span>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {team.map((member, i) => (
+          {/* Grille des 4 piliers de la culture */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+            {culture.map((item, i) => (
               <motion.div
-                key={member.name}
+                key={item.title}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{
                   duration: 0.6,
-                  delay: i * 0.1,
+                  delay: i * 0.12,
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -6 }}
-                className="relative bg-white border-[3px] border-black p-6 transition-all duration-300"
-                style={{ boxShadow: `6px 6px 0 ${member.color}` }}
+                whileHover={{ y: -8, rotate: -1 }}
+                className="group relative bg-white border-[3px] border-black p-6 md:p-7 transition-all duration-300"
+                style={{ boxShadow: `6px 6px 0 ${item.color}` }}
               >
-                <div
-                  className="w-12 h-12 md:w-14 md:h-14 border-2 border-black flex items-center justify-center mb-4 shadow-[3px_3px_0_#000]"
-                  style={{ background: member.color }}
+                {/* Numéro éditorial */}
+                <span
+                  className="absolute -top-3.5 -right-3.5 w-10 h-10 flex items-center justify-center border-2 border-black text-[11px] font-black shadow-[3px_3px_0_#000] z-10"
+                  style={{ background: item.color }}
                 >
-                  <member.icon className="w-6 h-6 md:w-7 md:h-7 text-black" />
-                </div>
+                  {item.number}
+                </span>
 
-                <h3 className="text-base md:text-lg font-black text-black uppercase tracking-tight">
-                  {member.name}
+                {/* Icône */}
+                <motion.div
+                  whileHover={{ rotate: -10, scale: 1.05 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                  className="w-14 h-14 border-2 border-black flex items-center justify-center mb-5 shadow-[3px_3px_0_#000]"
+                  style={{ background: item.color }}
+                >
+                  <item.icon className="w-7 h-7 text-black" />
+                </motion.div>
+
+                {/* Titre */}
+                <h3 className="text-xl md:text-2xl font-black text-black uppercase tracking-tight mb-3">
+                  {item.title}
                 </h3>
-                <p className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.15em] text-black/50 mt-1">
-                  {member.role}
+
+                {/* Description */}
+                <p className="text-black/70 text-sm leading-relaxed font-medium">
+                  {item.description}
                 </p>
+
+                {/* Ligne décorative animée */}
+                <div
+                  className="h-1.5 w-10 mt-6 transition-all duration-300 group-hover:w-20"
+                  style={{ background: item.color }}
+                />
               </motion.div>
             ))}
           </div>
 
+          {/* Tagline bas */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
             viewport={{ once: true }}
-            className="mt-12 flex items-center gap-3 justify-center"
+            className="mt-12 flex items-center gap-3 justify-center flex-wrap"
           >
-            <Coffee className="w-4 h-4 text-white/30" />
-            <p className="text-white/30 text-[10px] font-black uppercase tracking-[0.25em]">
-              Crafted in Morocco with coffee & passion
+            <Globe className="w-4 h-4 text-white/30" />
+            <p className="text-white/30 text-[10px] font-black uppercase tracking-[0.25em] text-center">
+              Design · Craft · Identity · Community — Casablanca, MA
             </p>
+            <Diamond className="w-4 h-4 text-white/30" />
           </motion.div>
         </div>
       </section>

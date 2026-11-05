@@ -158,7 +158,7 @@ export function About() {
                 className="w-full h-full"
               >
                 <Image
-                  src="/images/xsgbv.png"
+                  src="/images/caporaartz.png"
                   alt="Brand Cap Craftsmanship"
                   fill
                   className="object-cover"
@@ -191,40 +191,6 @@ export function About() {
                     </p>
                   </div>
                 </div>
-              </motion.div>
-
-              {/* Sticker "Made to Order" */}
-              <motion.div
-                initial={{ opacity: 0, x: -30, rotate: 8 }}
-                whileInView={{ opacity: 1, x: 0, rotate: 3 }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                viewport={{ once: true }}
-                className="absolute top-6 right-6 border-2 border-black px-3 py-2 shadow-[3px_3px_0_#000]"
-                style={{ background: POP.pink }}
-              >
-                <div className="flex items-center gap-2">
-                  <PenTool className="w-3.5 h-3.5 text-black" />
-                  <span className="text-[10px] font-black uppercase tracking-wider text-black">
-                    Made to Order
-                  </span>
-                </div>
-              </motion.div>
-
-              {/* Badge "Personalize" */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-                viewport={{ once: true }}
-                className="absolute bottom-6 right-6"
-              >
-                <span
-                  className="px-3 py-1.5 border-2 border-black text-[9px] font-black uppercase tracking-wider shadow-[3px_3px_0_#000] inline-flex items-center gap-1.5"
-                  style={{ background: POP.cyan }}
-                >
-                  <Zap className="w-3 h-3 text-black" />
-                  Personalize
-                </span>
               </motion.div>
             </div>
           </motion.div>

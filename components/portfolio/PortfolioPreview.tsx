@@ -15,7 +15,7 @@ const popularProducts = [
     price: 119.00,
     originalPrice: 199.00,
     discount: -40,
-    image: '/images/cas0.jpg',
+    image: '/images/cap5.jpg',
     slug: 'casquette-catch-of-the-day',
     color: '#FF3D7F', // Pop Pink
   },
@@ -26,7 +26,7 @@ const popularProducts = [
     price: 99.00,
     originalPrice: 124.00,
     discount: -20,
-    image: '/images/cas1.jpg',
+    image: '/images/flat-top military.jpg',
     slug: 'casquette-ny-noir-nb',
     color: '#00E5FF', // Pop Cyan
   },

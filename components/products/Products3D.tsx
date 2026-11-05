@@ -13,7 +13,7 @@ const products = [
     name: 'Street Icon',
     tagline: 'Bold · Urban · Iconic',
     price: 149,
-    image: '/images/cas0.jpg',
+    image: '/images/The baseball cap.jpg',
     color: '#FF3D7F',
     slug: 'street-icon',
   },
@@ -22,7 +22,7 @@ const products = [
     name: 'Neon Wave',
     tagline: 'Vibrant · Fresh · Loud',
     price: 129,
-    image: '/images/cas1.jpg',
+    image: '/images/cap9.jpg',
     color: '#00E5FF',
     slug: 'neon-wave',
   },
@@ -40,7 +40,7 @@ const products = [
     name: 'Violet Hype',
     tagline: 'Electric · Bold · Trendy',
     price: 159,
-    image: '/images/cas3.jpg',
+    image: '/images/nyr.jpg',
     color: '#B026FF',
     slug: 'violet-hype',
   },
@@ -160,7 +160,7 @@ export default function Products3D() {
               {/* Conteneur de l'image */}
               <div className="relative w-64 xl:w-80 h-32 xl:h-40">
                 <Image
-                  src="/images/capora01.png"
+                  src="/images/logocapora55.png"
                   alt="Capora MA"
                   fill
                   className="object-contain"

@@ -80,7 +80,7 @@ export default function Header() {
                   style={{ background: POP.yellow }}
                 >
                   <Image
-                    src="/images/capora01.png"
+                    src="/images/logocapora55.png"
                     alt="Capora"
                     width={180}
                     height={56}
